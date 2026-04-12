@@ -10,3 +10,8 @@ node_modules/
 terraform-lab/
 terraform-quizbattle/
 mysql-backup.tar.gz
+
+# Apps bloqueadas — se liberan dia a dia
+apps/campuseats/
+apps/quizbattle/
+apps/monitoring/

@@ -2,8 +2,6 @@
 
 Repositorio de trabajo para el **Bootcamp DevOps 2026** (T-Systems + Universidad de Granada).
 
-Aqui esta el codigo de las aplicaciones con las que trabajareis durante los 4 dias del bootcamp. Cada dia le anadireis una pieza nueva: contenedores, pipelines, Kubernetes y monitoring.
-
 ---
 
 ## Material del bootcamp
@@ -14,12 +12,12 @@ Slides, laboratorios, teoria y cheat-sheets estan en la plataforma del curso:
 
 El instructor os dara la contrasenya de acceso el primer dia.
 
-| Dia | Temas |
-|-----|-------|
-| Dia 1 | Cultura DevOps, Git, Docker, Docker Compose |
-| Dia 2 | CI/CD, GitHub Actions, Pipelines |
-| Dia 3 | Kubernetes, Helm, GitOps con ArgoCD |
-| Dia 4 | Terraform, Prometheus, Grafana, Proyecto Final |
+| Dia | Temas | App |
+|-----|-------|-----|
+| Dia 1 | Cultura DevOps, Git, Docker, Docker Compose | MyFitness |
+| Dia 2 | CI/CD, GitHub Actions, Pipelines | MyFitness + CampusEats |
+| Dia 3 | Kubernetes, Helm, GitOps con ArgoCD | CampusEats |
+| Dia 4 | Terraform, Prometheus, Grafana, Proyecto Final | QuizBattle + Monitoring |
 
 ---
 
@@ -61,33 +59,11 @@ Ya estais listos para el Dia 1.
 
 ## Aplicaciones
 
-### CampusEats (app principal — Dias 1-4)
+Las aplicaciones se van liberando dia a dia. Al principio solo teneis acceso a **MyFitness**. El instructor ira anadiendo las demas conforme avance el bootcamp.
 
-Plataforma de comida del campus universitario. Backend API + frontend + base de datos.
+### MyFitness (Dia 1)
 
-```
-apps/campuseats/
-├── backend/     Express API + Mongoose (puerto 3333)
-├── frontend/    HTML estatico + Nginx (puerto 5173)
-├── mongo/       MongoDB 8.0 + seed data (10 platos)
-└── compose.yml  3 servicios con healthchecks
-```
-
-**Stack:** Node.js + Express + MongoDB + Nginx
-
-Para probarla en local:
-
-```bash
-cd apps/campuseats
-docker compose up -d
-```
-
-- Frontend: http://localhost:5173
-- API: http://localhost:3333/dishes
-
-### MyFitness (Dia 1 — primer contacto con Docker)
-
-App sencilla de seguimiento de ejercicios. La usareis para crear vuestro primer Dockerfile.
+App de seguimiento de ejercicios. La usareis para crear vuestro primer Dockerfile y Docker Compose.
 
 ```
 apps/myfitness/
@@ -97,55 +73,28 @@ apps/myfitness/
 
 **Stack:** Node.js + Express + SQLite
 
-### QuizBattle (Dia 4 — Terraform multi-servicio)
+### CampusEats (Dias 2-3) — *bloqueada*
 
-Aplicacion de votacion en tiempo real con 5 microservicios. La desplegareis con Terraform.
+Plataforma de comida del campus. Backend API + frontend + MongoDB. Se libera en el Dia 2.
 
-```
-apps/quizbattle/
-├── vote/        Python Flask - UI de votacion (puerto 5050)
-├── results/     Node Express - Dashboard tiempo real (puerto 5001)
-├── worker/      Node - Procesa votos Redis → PostgreSQL
-├── postgres/    Base de datos relacional
-├── redis/       Cache en memoria
-└── compose.yml  5 servicios
-```
+### QuizBattle (Dia 4) — *bloqueada*
 
-**Stack:** Python + Node.js + Redis + PostgreSQL
+App de votacion en tiempo real con 5 microservicios. Se libera en el Dia 4 para Terraform.
+
+### Monitoring (Dia 4) — *bloqueada*
+
+Stack Prometheus + Grafana. Se libera en el Dia 4 para observabilidad.
 
 ---
 
 ## Que vais a construir
 
-Durante el bootcamp, este repositorio ira creciendo con vuestro trabajo:
-
 | Dia | Que anadis | Archivos nuevos |
 |-----|-----------|----------------|
-| Dia 1 | Dockerfiles + Docker Compose | `apps/*/Dockerfile`, `docker-compose.yml` |
+| Dia 1 | Dockerfiles + Docker Compose + push a DockerHub | `apps/myfitness/*/Dockerfile`, `docker-compose.yml` |
 | Dia 2 | Pipeline CI/CD | `.github/workflows/ci.yml` |
 | Dia 3 | Manifiestos Kubernetes | `k8s/*.yaml` |
 | Dia 4 | Infraestructura Terraform + Monitoring | `terraform-*/`, dashboards Grafana |
-
----
-
-## Estructura final (despues del Dia 4)
-
-```
-training-devops-bootcamp/
-├── apps/
-│   ├── campuseats/          ← App principal
-│   ├── myfitness/           ← App Docker basico
-│   └── quizbattle/          ← App multi-servicio
-├── .github/
-│   └── workflows/
-│       └── ci.yml           ← Pipeline CI/CD (Dia 2)
-├── k8s/                     ← Manifiestos Kubernetes (Dia 3)
-│   ├── mongo-*.yaml
-│   ├── backend-*.yaml
-│   ├── frontend-*.yaml
-│   └── configmap.yaml
-└── README.md
-```
 
 ---
 
