@@ -1,0 +1,12 @@
+services:
+  web:
+    build: .
+    ports:
+      - "${APP_PORT}:3000"
+    environment:
+      - REDIS_HOST=redis
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:${REDIS_VERSION}

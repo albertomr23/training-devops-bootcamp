@@ -13,6 +13,6 @@ jobs:
         with:
           node-version: '20'
       - run: npm ci
-        working-directory: ./backend
+        working-directory: ./apps/promptlab/backend
       - run: npm test
-        working-directory: ./backend
+        working-directory: ./apps/promptlab/backend
