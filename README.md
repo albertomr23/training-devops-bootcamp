@@ -1,3 +1,4 @@
+![CI](https://github.com/albertomr23/training-devops-bootcamp/actions/workflows/ci.yml/badge.svg)
 # Training DevOps Bootcamp
 
 Repositorio de trabajo para el **Bootcamp DevOps 2026** (T-Systems + Universidad de Granada).
